@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 <body>
 {% if latest_question_list %}
     <ul>
@@ -14,6 +16,7 @@
     {% endfor %}
     </ul>
 {% else %}
+    <br/>
     <p>No polls are available.</p>
 {% endif %}
 </body>
