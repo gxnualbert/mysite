@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from .models import Choice, Question
 from django.views import generic
+import datetime
 # Create your views here.
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -26,6 +27,13 @@ def detail(request, question_id):
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
     return render(request, 'polls/detail.html', {'question': question})
+
+def ctime(request):
+    # now = "fuck it"
+    now = datetime.datetime.now()
+    context={'cme':now}
+    # return render(request,'polls/ctime.html', {'cme': now})
+    return render(request,'polls/ctime.html',context)
 
 def results(request, question_id):
     # response = "You're looking at the results of question %s."
